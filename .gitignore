@@ -1,0 +1,15 @@
+
+#
+# For compiler output
+#
+a.out
+
+#
+# For assembly file
+#
+*.s
+
+#
+# For -fstack-usage
+#
+*.su
