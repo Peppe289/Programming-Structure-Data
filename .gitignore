@@ -3,13 +3,16 @@
 # For compiler output
 #
 a.out
+src/a.out
 
 #
 # For assembly file
 #
 *.s
+src/*.s
 
 #
 # For -fstack-usage
 #
 *.su
+src/*.su
