@@ -23,8 +23,15 @@ int recursive(int input, int counter)
      *
      * Effettivamente la moltiplicazione per 1 non
      * effettua alcuna mofica al risultato.
+     *
+     * Fermiamo i calcoli anche se il valore è minore di 1.
+     * Nel main() se il valore inserito è negativo lo
+     * rendiamo positivo, quindi escludiamo come corretto
+     * input un valore negativo o uguale a 0. In questo modo
+     * ritorniamo lo stesso risultato dell'input senza
+     * creare errore nel codice.
      */
-    if (input == 1)
+    if (input <= 1)
         return input;
 
     /**
@@ -42,12 +49,23 @@ int recursive(int input, int counter)
 int main()
 {
     int input;
+    short int flag = 1;
 
     printf("Inserisci il numero da calcolare: ");
     scanf("%d", &input);
 
+    /**
+     * Se il valore è negativo rendilo positivo
+     * ricordalo per l'output
+     */
+    if (input < 0)
+    {
+        flag = 0;
+        input = -input;
+    }
+
     printf("From %s. Result: %d\n", __func__,
-           recursive(input, 1));
+           flag ? recursive(input, 1) : -recursive(input, 1));
 
     return 0;
 }
