@@ -19,6 +19,7 @@ Lo script `conf.sh` confiura nel root del tuo progetto settaggi utili per VSCode
 - -O3 : La migliore ottimizzazione che puoi trovare. [Approfondisci](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)
 - -Wall e -Wextra : Per un debug totale in fase di compilazione
 - -fstack-usage : Per controllare lo spazio occupato dalla memoria statica.
+- -std=c2x : Per utilizzare l'ultima versione di C
 
 *Attenzione : Questa configurazione compila su un singolo file. Se vuoi cambiare questo modifica il file `.vscode/tasks.json`* 
 
