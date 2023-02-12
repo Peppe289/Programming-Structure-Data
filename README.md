@@ -28,6 +28,10 @@ Lo script `conf.sh` confiura nel root del tuo progetto settaggi utili per VSCode
 
 ![Running](./img/run.png)
 
+Debug da VSCode
+---
+Puoi usare i breakpoint. Il file `.vscode/tasks.json` è già configurato per questo. Devi solo inserire il breakpoint nel tuo programma, nel punto che desideri. [StackOverflow](https://stackoverflow.com/a/4326474)
+
 Strumenti usati per il controllo
 ---
 
