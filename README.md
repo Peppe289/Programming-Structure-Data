@@ -24,6 +24,10 @@ Lo script `conf.sh` confiura nel root del tuo progetto settaggi utili per VSCode
 *Attenzione : Questa configurazione compila su un singolo file. Se vuoi cambiare questo modifica il file `.vscode/tasks.json`* 
 
 
+![Debug](./img/start.png)
+
+![Running](./img/run.png)
+
 Strumenti usati per il controllo
 ---
 
