@@ -23,10 +23,7 @@ Lo script `conf.sh` confiura nel root del tuo progetto settaggi utili per VSCode
 
 *Attenzione : Questa configurazione compila su un singolo file. Se vuoi cambiare questo modifica il file `.vscode/tasks.json`* 
 
-
-![Debug](./img/start.png)
-
-![Running](./img/run.png)
+[img](#img)
 
 Debug da VSCode
 ---
@@ -51,3 +48,11 @@ GCC flag
 ---
 Per il controllo di eventuali possibili problemi di sintassi uso `-Wall`. Per il controllo dell'uso dello stack `-fstack-usage`. <br>
 Ogni diverse versioni di C hanno diversi usi sul alcune cose. Per capire la differenza tra una funzione e un'altra basta cambiare versione da far usare a GCC con il flag: `-std=X` dove `X` è la versione.
+
+VSCode img
+---
+<a name="img"></a>
+
+![Debug](./img/start.png)
+
+![Running](./img/run.png)
