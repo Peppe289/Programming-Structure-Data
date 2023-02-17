@@ -20,6 +20,11 @@
                 "-Wall", // enable full warning
                 "-Wextra", // enable extra warning
                 "-fstack-usage", // take info of stack usage
+                /*
+                 * Macro for compiler as debug with GDB.
+                 * This help for define preprocessor directive.
+                 */
+                "-DGDB_DEBUG_VSC",
                 "${file}", // current file
                 "-o",
                 "a.out"
