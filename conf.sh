@@ -15,6 +15,12 @@ remote_sync() {
     fi
 }
 
+GDB=$(which gdb &> /dev/null)
+
+if [[ -z $GDB ]]; then
+    echo "Please install GDB before."
+fi
+
 if [[ -d $VSCode ]]; then
     echo "VSCode directory exist"
 else
