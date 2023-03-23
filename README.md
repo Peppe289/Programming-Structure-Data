@@ -38,12 +38,14 @@ Strumenti usati per il controllo
 
 Valgrind
 ---
-Approfondisci l'uso di [valgrind sul loro sito](https://valgrind.org/). 
+Approfondisci l'uso di [valgrind sul loro sito](https://valgrind.org/). (`solo per linux`)
+
 I flag che utilizzo:
 
 ```shell
 --tool=memcheck --error-exitcode=1 --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 ```
+
 GCC flag
 ---
 Per il controllo di eventuali possibili problemi di sintassi uso `-Wall`. Per il controllo dell'uso dello stack `-fstack-usage`. <br>
