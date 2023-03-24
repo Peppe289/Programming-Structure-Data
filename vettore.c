@@ -20,10 +20,12 @@ int *input_array_dyn(int *size, const char *line)
      * @i:      Incremento del for.
      * @size:   Dimensione di realloc().
      * @index:  Indice della linea del buffer.
+     * @len:    Lunghezza dei caratteri letti.
      */
     int *ret;
     int i, buff;
     int index = 0;
+    int len;
 
     *size = 1;
     ret = malloc(*size * sizeof(int));
@@ -45,15 +47,15 @@ int *input_array_dyn(int *size, const char *line)
         }
 
         // ripeti fino a fine dell'input (EOF).
-        if (sscanf(&line[index], "%d", &buff) != EOF)
+        if (sscanf(&line[index], "%d%n", &buff, &len) != EOF)
         {
             /**
-             * log10(buff) + 1 è per la lunghezza del numero.
-             * +1 è per lo spazio. in questo modo cambia
-             * l'indice dell'indirizzo base per poter leggere
+             * len è per la lunghezza del numero.
+             * In questo modo cambia l'indice
+             * dell'indirizzo base per poter leggere
              * il numero successivo.
              */
-            index += log10(buff) + 1;
+            index += len;
 #ifdef DEBUG
             printf("%d ", buff);
 #endif
@@ -74,7 +76,6 @@ int *input_array_dyn(int *size, const char *line)
     --(*size);
     return ret;
 }
-
 
 /**
  * Restituisce il nuovo array concatenato sui 2 presi in input.
