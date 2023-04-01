@@ -51,7 +51,7 @@ int main() {
 		printf("Eliminato\n");
 	}
 #else
-	printf("Inserisci la canzone: ");
+	printf("Inserisci il titolo della canzone da eliminare: ");
 	delete=inputString();
 	stampa = removeListItem(songList(list),
 			(Item)findName(songList(list), delete));
