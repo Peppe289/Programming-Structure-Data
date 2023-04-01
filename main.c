@@ -23,11 +23,11 @@ int main() {
 	int pos;
 #else
 	Playlist list = createPlaylist("BRUH");
+	char *delete;
 #endif // SONG_COMPILE
 
 	int i;
 	Item el;
-	char *delete;
 	Item stampa;
 
 	for (i = 0; i < 2; i++){
