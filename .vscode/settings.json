@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "stdio.h": "c",
+        "playlist.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
+}
