@@ -30,7 +30,7 @@ int main() {
 	Item el;
 	Item stampa;
 
-	for (i = 0; i < 2; i++){
+	for (i = 0; i < 5; i++){
 		el = inputItem();
 		CREATE_DATA(list, el);
 	}
