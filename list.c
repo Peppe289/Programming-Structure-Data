@@ -15,6 +15,41 @@ struct node
 	struct node *next;
 };
 
+/**
+ * Prende in input e alloca dinamicamente la stringa.
+ * Il valore di ritorno è la stringa.
+ * 
+ * Il vantaggio di questa funzione è il poter prendere gli spazi.
+ */
+char *inputString() {
+	char *ret;
+	char tmp;
+	int size = 1;
+	ret = malloc(size * sizeof(char));
+
+	do {
+		tmp = getchar();
+		ret = realloc(ret, (++size) * sizeof(char));
+		ret[size - 2] = tmp;
+	} while(tmp != '\n');
+
+	ret[size - 2] = '\0';
+
+	return ret;
+}
+
+struct node *headList(List data) {
+	return data->head;
+}
+
+struct node *nextList(struct node *data) {
+	return data->next;
+}
+
+Item valueNode(struct node *data) {
+	return data->value;
+}
+
 void sortList(List data)
 {
 	struct node *p;
@@ -123,6 +158,15 @@ Item removeListItem(List l, Item q)
 	Item val;
 	if (isEmpty(l))
 		return NULL;
+
+	/**
+	 * Il valore da eliminare potrebbe
+	 * essere un valore nullo.
+	 */
+	if (q == NULL) {
+		return NULL;
+	}
+
 	for (p = l->head; p != NULL; prev = p, p = p->next)
 	{
 		if (cmpItem(q, p->value) == 0)

@@ -19,3 +19,8 @@ int addListTail(List, Item);
 void reverseList(List);
 List cloneList(List);
 List cloneListItem(List);
+char *inputString();
+struct node *headList(List data);
+struct node *nextList(struct node *data);
+Item valueNode(struct node *data);
+

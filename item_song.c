@@ -43,27 +43,6 @@ Playlist createPlaylist(char *name) {
 }
 
 /**
- * Prende in input e alloca dinamicamente la stringa.
- * Il valore di ritorno è la stringa.
- * 
- * Il vantaggio di questa funzione è il poter prendere gli spazi.
- */
-static char *inputString() {
-	char *ret;
-	char tmp;
-	int size = 1;
-	ret = malloc(size * sizeof(char));
-
-	do {
-		tmp = getchar();
-		ret = realloc(ret, (++size) * sizeof(char));
-		ret[size - 2] = tmp;
-	} while(tmp != '\n');
-
-	return ret;
-}
-
-/**
  * L'input viene fatto per titolo, artista e durata.
  * Tutto nella memoria heap.
  */
@@ -123,4 +102,20 @@ int cmpItem(Item data1, Item data2) {
 	char *p2=((struct song *)data2)->title;
 
 	return strcmp(p1,p2);
+}
+
+void *findName(List data, char *name) {
+	struct node *p;
+
+	for (p = headList(data); p != NULL; p = nextList(p))
+	{
+		//printf("\n%s(): %s", __func__, title(valueNode(p)));
+
+		if (!strcmp(name, title(valueNode(p)))) {
+			//printf("Valore trovato all'indirizzo: %p", title(valueNode(p)));
+			return valueNode(p);
+		}
+	}
+
+	return NULL;
 }

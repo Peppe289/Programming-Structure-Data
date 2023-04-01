@@ -9,3 +9,4 @@ void sortPlaylist(Playlist);
 void printPlaylist(Playlist);
 
 List songList(Playlist data);
+void *findName(List data, char *name);

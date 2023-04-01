@@ -20,16 +20,17 @@ int main() {
 
 #ifndef SONG_COMPILE
 	List list = newList();
+	int pos;
 #else
 	Playlist list = createPlaylist("BRUH");
 #endif // SONG_COMPILE
 
 	int i;
-	int pos;
-	Item stampa;
 	Item el;
-	
-	for (i = 0; i < 4; i++){
+	char *delete;
+	Item stampa;
+
+	for (i = 0; i < 2; i++){
 		el = inputItem();
 		CREATE_DATA(list, el);
 	}
@@ -37,7 +38,7 @@ int main() {
 	PRINT_LIST(list);
 
 	printf("\n");
-
+#ifndef SONG_COMPILE
 	printf("Inserisci la posizione da eliminare: ");
 	scanf("%d", &pos);
 	stampa = REMOVE_LIST(list, pos);
@@ -49,8 +50,18 @@ int main() {
 		outputItem(stampa);
 		printf("Eliminato\n");
 	}
-
-
+#else
+	printf("Inserisci la canzone: ");
+	delete=inputString();
+	stampa = removeListItem(songList(list),
+			(Item)findName(songList(list), delete));
+	if (!stampa) {
+		printf("\nCanzone %s non trovata\n", delete);
+	} else {
+		printf("\nEliminata la canzone: ");
+		outputItem(stampa);
+	}
+#endif
 	printf("\nLista aggiornata: ");
 	PRINT_LIST(list);
 
