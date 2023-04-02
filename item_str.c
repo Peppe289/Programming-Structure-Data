@@ -26,5 +26,8 @@ int cmpItem(Item a,Item b){
 }
 
 void *addrDataInput() {
-	return inputString();
+	char *ret;
+	ret = malloc(20 * sizeof(char));
+	scanf("%s", ret);
+	return ret;
 }
