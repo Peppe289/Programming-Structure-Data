@@ -5,27 +5,29 @@
 
 #define MAX 20
 
-
-Item inputItem(){
-	char *p=malloc(MAX*sizeof(char));
+Item inputItem()
+{
+	char *p = malloc(MAX * sizeof(char));
 	scanf("%s", p);
 
 	return p;
 }
 
-void outputItem(Item a){
-	char *p=a;
+void outputItem(Item a)
+{
+	char *p = a;
 	printf("%s ", p);
-	
 }
-int cmpItem(Item a,Item b){
-	char *p1=a;
-	char *p2=b;
+int cmpItem(Item a, Item b)
+{
+	char *p1 = a;
+	char *p2 = b;
 
-	return strcmp(p1,p2);
+	return strcmp(p1, p2);
 }
 
-void *addrDataInput() {
+void *addrDataInput()
+{
 	char *ret;
 	ret = malloc(20 * sizeof(char));
 	scanf("%s", ret);

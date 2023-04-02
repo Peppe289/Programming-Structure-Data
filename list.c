@@ -18,35 +18,40 @@ struct node
 /**
  * Prende in input e alloca dinamicamente la stringa.
  * Il valore di ritorno è la stringa.
- * 
+ *
  * Il vantaggio di questa funzione è il poter prendere gli spazi.
  */
-char *inputString() {
+char *inputString()
+{
 	char *ret;
 	char tmp;
 	int size = 1;
 	ret = malloc(size * sizeof(char));
 
-	do {
+	do
+	{
 		tmp = getchar();
 		ret = realloc(ret, (++size) * sizeof(char));
 		ret[size - 2] = tmp;
-	} while(tmp != '\n');
+	} while (tmp != '\n');
 
 	ret[size - 2] = '\0';
 
 	return ret;
 }
 
-struct node *headList(List data) {
+struct node *headList(List data)
+{
 	return data->head;
 }
 
-struct node *nextList(struct node *data) {
+struct node *nextList(struct node *data)
+{
 	return data->next;
 }
 
-Item valueNode(struct node *data) {
+Item valueNode(struct node *data)
+{
 	return data->value;
 }
 
@@ -56,9 +61,11 @@ void sortList(List data)
 	struct node *next;
 	for (p = data->head; p != NULL; p = p->next)
 	{
-		//printf("%d -> ", *((int*)p->value));
-		for (next = p->next; next != NULL; next = next->next) {
-			if (cmpItem(p->value, next->value) > 0) {
+		// printf("%d -> ", *((int*)p->value));
+		for (next = p->next; next != NULL; next = next->next)
+		{
+			if (cmpItem(p->value, next->value) > 0)
+			{
 				void *tmp;
 				tmp = next->value;
 				next->value = p->value;
@@ -163,7 +170,8 @@ Item removeListItem(List l, Item q)
 	 * Il valore da eliminare potrebbe
 	 * essere un valore nullo.
 	 */
-	if (q == NULL) {
+	if (q == NULL)
+	{
 		return NULL;
 	}
 

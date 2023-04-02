@@ -23,7 +23,8 @@ struct song
 	float duration;
 };
 
-List songList(Playlist data) {
+List songList(Playlist data)
+{
 	return data->songs;
 }
 
@@ -31,11 +32,12 @@ List songList(Playlist data) {
  * Ogni Playlist contiene un nome e punta ad un indirizzo
  * di una struct che contiene la dimensione (ovvero il numero di canzoni)4
  * e la prima canzone.
- * 
+ *
  * Crea quindi la memoria heap di Playlist e poi l'inizio della
  * lista delle canzoni.
  */
-Playlist createPlaylist(char *name) {
+Playlist createPlaylist(char *name)
+{
 	Playlist ret = malloc(sizeof(struct playlist));
 	ret->name = name;
 	ret->songs = newList();
@@ -46,7 +48,8 @@ Playlist createPlaylist(char *name) {
  * L'input viene fatto per titolo, artista e durata.
  * Tutto nella memoria heap.
  */
-Song initSong() {
+Song initSong()
+{
 	Song ret;
 
 	ret = malloc(sizeof(struct song));
@@ -66,7 +69,8 @@ Song initSong() {
 	return ret;
 }
 
-Item inputItem () {
+Item inputItem()
+{
 	return initSong();
 }
 
@@ -75,21 +79,26 @@ Item inputItem () {
  * List contiene le informazioni sulla lista.
  * Quindi referenziamo a head->songs per avere list.
  */
-void addSong(Playlist head, Song data) {
+void addSong(Playlist head, Song data)
+{
 	addHead(head->songs, data);
 }
 
-char *title(Song data) {
+char *title(Song data)
+{
 	return data->title;
 }
-char *artist(Song data) {
+char *artist(Song data)
+{
 	return data->artist;
 }
-float duration(Song data) {
+float duration(Song data)
+{
 	return data->duration;
 }
 
-void outputItem(Item data){
+void outputItem(Item data)
+{
 	Song output = data;
 
 	printf("\nNome dell'artista: %s", artist(output));
@@ -97,22 +106,25 @@ void outputItem(Item data){
 	printf("\nDurata della canzone: %f\n\n", duration(output));
 }
 
-int cmpItem(Item data1, Item data2) {
-	char *p1=((struct song *)data1)->title;
-	char *p2=((struct song *)data2)->title;
+int cmpItem(Item data1, Item data2)
+{
+	char *p1 = ((struct song *)data1)->title;
+	char *p2 = ((struct song *)data2)->title;
 
-	return strcmp(p1,p2);
+	return strcmp(p1, p2);
 }
 
-void *findName(List data, char *name) {
+void *findName(List data, char *name)
+{
 	struct node *p;
 
 	for (p = headList(data); p != NULL; p = nextList(p))
 	{
-		//printf("\n%s(): %s", __func__, title(valueNode(p)));
+		// printf("\n%s(): %s", __func__, title(valueNode(p)));
 
-		if (!strcmp(name, title(valueNode(p)))) {
-			//printf("Valore trovato all'indirizzo: %p", title(valueNode(p)));
+		if (!strcmp(name, title(valueNode(p))))
+		{
+			// printf("Valore trovato all'indirizzo: %p", title(valueNode(p)));
 			return valueNode(p);
 		}
 	}
@@ -120,6 +132,7 @@ void *findName(List data, char *name) {
 	return NULL;
 }
 
-void *addrDataInput() {
+void *addrDataInput()
+{
 	return inputString();
 }

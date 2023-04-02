@@ -72,7 +72,7 @@ int main(void)
 		case 1:
 			printf("Scegli quanti valori vuoi inserire: ");
 			scanf("%d", &size);
-			
+
 			// clear buffer
 			getchar();
 
