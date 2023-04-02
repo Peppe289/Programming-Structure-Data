@@ -24,3 +24,7 @@ int cmpItem(Item a,Item b){
 
 	return strcmp(p1,p2);
 }
+
+void *addrDataInput() {
+	return inputString();
+}

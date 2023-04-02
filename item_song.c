@@ -119,3 +119,7 @@ void *findName(List data, char *name) {
 
 	return NULL;
 }
+
+void *addrDataInput() {
+	return inputString();
+}

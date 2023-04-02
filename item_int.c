@@ -21,3 +21,10 @@ int cmpItem(Item a, Item b){
 	return (*p1-*p2);
 }
 
+void *addrDataInput() {
+	int *ret;
+	ret = malloc(sizeof(int));
+	scanf("%d", &ret);
+	return ret;
+}
+
