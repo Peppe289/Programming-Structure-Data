@@ -1,4 +1,7 @@
-#include "item.h"
+#ifndef _PSD_LIST_H_
+#define _PSD_LIST_H_
+
+#include <item.h>
 
 typedef struct list *List;
 
@@ -24,3 +27,4 @@ struct node *headList(List data);
 struct node *nextList(struct node *data);
 Item valueNode(struct node *data);
 
+#endif // _PSD_LIST_H_

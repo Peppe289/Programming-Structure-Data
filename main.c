@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "playlist.h"
-#include "item.h"
-#include "list.h"
-#include "song.h"
+#include <playlist.h>
+#include <item.h>
+#include <list.h>
+#include <song.h>
 
 #ifndef SONG_COMPILE
 #define CREATE_DATA(x, y) addHead(x, y);

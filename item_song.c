@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "song.h"
-#include "playlist.h"
-#include "list.h"
-#include "item.h"
 #include <string.h>
+#include <song.h>
+#include <playlist.h>
+#include <list.h>
+#include <item.h>
 
 struct playlist
 {

@@ -1,10 +1,10 @@
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Iinclude/
 
 SONG_DEF = -DSONG_COMPILE
 INT_DEF = -DINT_COMPILE
 STRING_DEF = -DSTRING_COMPILE
 
-link_song: list item_song main_song
+link_song: list item_song main
 	gcc list.o item_song.o main.o $(SONG_DEF)
 
 link_int : list item_int main
@@ -14,10 +14,10 @@ link_str : list item_str main
 	gcc list.o item_str.o main.o $(STRING_DEF)
 
 item_str :
-	gcc -c item_str.c $(FLAGS) $(STRING_DEF)
+	gcc -c item_str.c $(FLAGS)
 
 item_int :
-	gcc -c item_int.c $(FLAGS) $(INT_DEF)
+	gcc -c item_int.c $(FLAGS)
 
 item_song :
 	gcc -c item_song.c $(FLAGS)
@@ -27,13 +27,6 @@ list :
 
 main : 
 	gcc -c main.c $(FLAGS)
-
-#
-# Senza creare un secondo main compilalo
-# con direttive di preprocessione diverse.
-#
-main_song :
-	gcc -c main.c $(FLAGS) $(SONG_DEF)
 
 clean : 
 	rm -f *.o a.out
