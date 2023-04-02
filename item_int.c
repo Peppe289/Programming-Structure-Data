@@ -24,7 +24,7 @@ int cmpItem(Item a, Item b){
 void *addrDataInput() {
 	int *ret;
 	ret = malloc(sizeof(int));
-	scanf("%d", &ret);
+	scanf("%d", ret);
 	return ret;
 }
 

@@ -10,7 +10,7 @@
 #define PRINT_LIST(x) printList(x);
 #define REMOVE_LIST(x, y) removeListPos(x, y);
 #define SORT_LIST(x) sortList(x);
-#define REMOVE_ITEM removeListItem(x, y);
+#define REMOVE_ITEM(x, y) removeListItem(x, y);
 #else
 #define CREATE_DATA(x, y) addSong(x, y);
 #define PRINT_LIST(x) printList(songList(x));
