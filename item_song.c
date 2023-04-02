@@ -1,10 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
 #include <song.h>
 #include <playlist.h>
-#include <list.h>
+
 #include <item.h>
+#include <list.h>
 
 struct playlist
 {
@@ -135,4 +137,57 @@ void *findName(List data, char *name)
 void *addrDataInput()
 {
 	return inputString();
+}
+
+/**
+ * Ritorna l'indirizzo del titolo
+ */
+static void *addrTitle(Node data) {
+	return ((Song)valueNode(data))->title;
+}
+
+/**
+ * Ritorna l'indirizzo dell'artista
+ */
+static void *addrArtist(Node data) {
+	return ((Song)valueNode(data))->artist;
+}
+
+/**
+ * Ritorna l'indirizzo dell'Item value
+ */
+static void *addrStruct(Node data) {
+	return valueNode(data);
+}
+
+/**
+ * Per item_int la struttura è:
+ * 
+ * struct node {
+ * 		Item value;
+ * 		struct node *next;
+ * }
+ * 
+ * @value: punta alla struttura song.
+ * 
+ * struct song {
+ * 		char *title;
+ * 		char *artist;
+ * 		float duration;
+ * }
+ * 
+ * @title: titolo su memoria heap
+ * @artist: artista su memoria heap
+ * 
+ * necessario fare il free nel seguente ordine di:
+ * - node->song->title
+ * - node->song->artist
+ * - node->song
+ * - node
+ */
+void free_struct(Node data) {
+	free(addrTitle(data));
+	free(addrArtist(data));
+	free(addrStruct(data));
+	free(data);
 }

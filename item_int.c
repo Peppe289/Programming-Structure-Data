@@ -1,6 +1,8 @@
-#include <item.h>
 #include <stdlib.h>
 #include <stdio.h>
+
+#include <item.h>
+#include <list.h>
 
 Item inputItem()
 {
@@ -30,4 +32,27 @@ void *addrDataInput()
 	ret = malloc(sizeof(int));
 	scanf("%d", ret);
 	return ret;
+}
+
+/**
+ * Ritorna l'indirizzo dell'Item value
+ */
+static void *addrStruct(Node data) {
+	return valueNode(data);
+}
+
+/**
+ * Per item_int la struttura è:
+ * 
+ * struct node {
+ * 		Item value;
+ * 		struct node *next;
+ * }
+ * 
+ * @value: contiene un int su memoria heap.
+ * Basta fare il free del valore.
+ */
+void free_struct(Node data) {
+	free(addrStruct(data));
+	free(data);
 }

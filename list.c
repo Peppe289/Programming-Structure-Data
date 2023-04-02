@@ -186,7 +186,7 @@ Item removeListItem(List l, Item q)
 				prev->next = p->next;
 				val = p->value; // assegno il valore precedente dell'item
 				(l->size)--;	// decremento taglia lista
-				free(p);		// libero memoria p
+				free_struct(p);		// libero memoria p
 				return val;		// ritorno l'item
 			}
 		}
@@ -212,7 +212,7 @@ Item removeListPos(List l, int pos)
 				prev->next = p->next;
 				val = p->value; // assegno il valore precedente dell'item
 				(l->size)--;	// decremento taglia lista
-				free(p);		// libero memoria p
+				free_struct(p);		// libero memoria p
 				return val;		// ritorno l'item
 			}
 		}
