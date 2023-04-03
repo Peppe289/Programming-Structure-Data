@@ -6,23 +6,23 @@
 #include <song.h>
 
 #ifndef SONG_COMPILE
-#define CREATE_DATA(x, y) addHead(x, y);
-#define PRINT_LIST(x) printList(x);
-#define REMOVE_LIST(x, y) removeListPos(x, y);
-#define SORT_LIST(x) sortList(x);
-#define REMOVE_ITEM(x, y) removeListItem(x, y);
-#define SIZE_LIST(x) sizeList(x);
-#define DESTROY_NODE(x) removeHead(x);
-#define DESTROY_LIST(x) free(x);
+#define CREATE_DATA(x, y) addHead(x, y)
+#define PRINT_LIST(x) printList(x)
+#define REMOVE_LIST(x, y) removeListPos(x, y)
+#define SORT_LIST(x) sortList(x)
+#define REMOVE_ITEM(x, y) removeListItem(x, y)
+#define SIZE_LIST(x) sizeList(x)
+#define DESTROY_NODE(x) removeHead(x)
+#define DESTROY_LIST(x) free(x)
 #else
-#define CREATE_DATA(x, y) addSong(x, y);
-#define PRINT_LIST(x) printList(songList(x));
-#define REMOVE_LIST(x, y) removeListPos(songList(x), y);
-#define SORT_LIST(x) sortList(songList(x));
-#define REMOVE_ITEM(x, y) removeListItem(songList(x), (Item)findName(songList(x), y));
-#define SIZE_LIST(x) sizeList(songList(x));
-#define DESTROY_NODE(x) removeHead(songList(x));
-#define DESTROY_LIST(x) free(songList(x));
+#define CREATE_DATA(x, y) addSong(x, y)
+#define PRINT_LIST(x) printList(songList(x))
+#define REMOVE_LIST(x, y) removeListPos(songList(x), y)
+#define SORT_LIST(x) sortList(songList(x))
+#define REMOVE_ITEM(x, y) removeListItem(songList(x), (Item)findName(songList(x), y))
+#define SIZE_LIST(x) sizeList(songList(x))
+#define DESTROY_NODE(x) removeHead(songList(x))
+#define DESTROY_LIST(x) free(songList(x))
 #endif
 
 /**
