@@ -11,12 +11,18 @@
 #define REMOVE_LIST(x, y) removeListPos(x, y);
 #define SORT_LIST(x) sortList(x);
 #define REMOVE_ITEM(x, y) removeListItem(x, y);
+#define SIZE_LIST(x) sizeList(x);
+#define DESTROY_NODE(x) removeHead(x);
+#define DESTROY_LIST(x) free(x);
 #else
 #define CREATE_DATA(x, y) addSong(x, y);
 #define PRINT_LIST(x) printList(songList(x));
 #define REMOVE_LIST(x, y) removeListPos(songList(x), y);
 #define SORT_LIST(x) sortList(songList(x));
 #define REMOVE_ITEM(x, y) removeListItem(songList(x), (Item)findName(songList(x), y));
+#define SIZE_LIST(x) sizeList(songList(x));
+#define DESTROY_NODE(x) removeHead(songList(x));
+#define DESTROY_LIST(x) free(songList(x));
 #endif
 
 /**
@@ -66,6 +72,29 @@ int main(void)
 		{
 		/* esci dal programma */
 		case 0:
+			size = SIZE_LIST(list);
+			printf("\nExit...\nRimuovi la memoria di %d elementi\n",
+				   size);
+
+			for (i = 0; i != size; i++)
+			{
+				DESTROY_NODE(list);
+			}
+
+			/**
+			 * Rimuovi la memoria allocata con newList()
+			 */
+			DESTROY_LIST(list);
+
+#ifdef SONG_COMPILE
+			/**
+			 * Rimuovi la memoria allocata con createPlaylist();
+			 *
+			 * La funzione è disponibile solo per item_song();
+			 */
+			free(list);
+#endif
+			// chiudi il programma
 			exit(0);
 			break;
 		/* Aggiungere un dato in testa alla lista */
