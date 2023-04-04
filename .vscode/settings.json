@@ -3,7 +3,16 @@
         "stdlib.h": "c",
         "stdio.h": "c",
         "playlist.h": "c",
-        "list": "c"
+        "list": "c",
+        "signal.h": "c"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/peppe289/Desktop/PSD-lab5",
+            "binaryPath": "/home/peppe289/Desktop/PSD-lab5/a.out",
+            "binaryArgs": []
+        }
+    ],
+    "cmake.configureOnOpen": false
 }

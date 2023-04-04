@@ -1,4 +1,25 @@
-FLAGS = -Wall -Wextra -Iinclude/ -g
+
+#
+# Debug
+#
+FLAGS = -Wall -Wextra -g
+
+#
+# header
+#
+FLAGS += -Iinclude/
+
+#
+# Other flags
+#
+FLAGS += -std=c2x -lm
+
+#
+# Macro per abilitare il debug con GDB 
+#
+ifeq ($(dbg), true)
+	FLAGS += -DGDB_DEBUG
+endif
 
 SONG_DEF = -DSONG_COMPILE
 INT_DEF = -DINT_COMPILE

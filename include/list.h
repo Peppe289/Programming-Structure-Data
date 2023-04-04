@@ -3,6 +3,10 @@
 
 #include <item.h>
 
+#ifdef GDB_DEBUG
+#include <signal.h>
+#endif
+
 typedef struct list *List;
 
 List newList();

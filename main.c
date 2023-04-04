@@ -115,7 +115,13 @@ int main(void)
 		case 2:
 			printf("Inserisci il dato da eliminare: ");
 			delete = addrDataInput();
+#ifdef GDB_DEBUG
+			raise(SIGINT);
+#endif
 			stampa = REMOVE_ITEM(list, delete);
+#ifdef GDB_DEBUG
+			raise(SIGINT);
+#endif
 			if (!stampa)
 			{
 #ifdef INT_COMPILE
