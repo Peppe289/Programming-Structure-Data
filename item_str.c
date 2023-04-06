@@ -5,15 +5,10 @@
 #include <list.h>
 #include <item.h>
 
-#define MAX 20
-
 Item inputItem()
 {
-	char *p = malloc(MAX * sizeof(char));
 	printf("Inserisci la stringa: ");
-	scanf("%s", p);
-
-	return p;
+	return inputString();
 }
 
 void outputItem(Item a)
@@ -31,10 +26,7 @@ int cmpItem(Item a, Item b)
 
 void *addrDataInput()
 {
-	char *ret;
-	ret = malloc(20 * sizeof(char));
-	scanf("%s", ret);
-	return ret;
+	return inputString();
 }
 
 /**
