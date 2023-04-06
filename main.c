@@ -78,7 +78,27 @@ int main(void)
 
 			for (i = 0; i != size; i++)
 			{
-				DESTROY_NODE(list);
+				/**
+				 * @DESTROY_NODE: è definito con removeHead().
+				 * L'intendo è rimuovere tutte le teste
+				 * per distruggere tutti i nodi.
+				 * 
+				 * Tuttavia la funzione removeHead() ha un valore
+				 * di ritorno che è un puntatore al dato eliminato.
+				 * 
+				 * E' necessario fare il free() anche di quello. 
+				 */
+				el = DESTROY_NODE(list);
+
+				if (el) {
+#ifdef SONG_COMPILE
+					free(artist(el));
+					free(title(el));
+					free(el);
+#else
+					free(el);
+#endif
+				}
 			}
 
 			/**
@@ -134,7 +154,16 @@ int main(void)
 			{
 				printf("\nEliminato: ");
 				outputItem(stampa);
+
+#ifdef SONG_COMPILE
+					free(artist(stampa));
+					free(title(stampa));
+					free(stampa);
+#else
+					free(stampa);
+#endif
 			}
+			free(delete);
 			break;
 		/* Rimuovere un dato con l'indice */
 		case 3:
@@ -147,6 +176,13 @@ int main(void)
 			{
 				printf("\nEliminato: ");
 				outputItem(stampa);
+#ifdef SONG_COMPILE
+					free(artist(stampa));
+					free(title(stampa));
+					free(stampa);
+#else
+					free(stampa);
+#endif
 			}
 			break;
 		/* Ordinare la lista */
