@@ -7,6 +7,7 @@
         "signal.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.cStandard": "gnu23",
     "makefile.launchConfigurations": [
         {
             "cwd": "/home/peppe289/Desktop/PSD-lab5",
