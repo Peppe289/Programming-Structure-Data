@@ -10,6 +10,7 @@
             "cStandard": "c17",
             "cppStandard": "c++14",
             "intelliSenseMode": "linux-gcc-x86",
+            "compilerPath": "/usr/bin/gcc",
             "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
