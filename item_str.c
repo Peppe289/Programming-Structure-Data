@@ -10,6 +10,7 @@
 Item inputItem()
 {
 	char *p = malloc(MAX * sizeof(char));
+	printf("Inserisci la stringa: ");
 	scanf("%s", p);
 
 	return p;

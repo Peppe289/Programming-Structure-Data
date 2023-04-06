@@ -7,6 +7,7 @@
 Item inputItem()
 {
 	int *p = malloc(sizeof(int));
+	printf("Inserisci il valore int: ");
 	scanf("%d", p);
 
 	return p;
