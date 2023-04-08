@@ -4,7 +4,11 @@
         "stdio.h": "c",
         "playlist.h": "c",
         "list": "c",
-        "signal.h": "c"
+        "signal.h": "c",
+        "item_str": "c",
+        "item_int": "c",
+        "item_song": "c",
+        "main": "c"
     },
     "C_Cpp.errorSquiggles": "enabled",
     "C_Cpp.default.cStandard": "gnu23",
