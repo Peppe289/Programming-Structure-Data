@@ -254,28 +254,31 @@ Item removeListPos(List list, int pos)
 	return NULL;
 }
 
-int addListPos(List list, Item el, int pos) {
-    struct node *p = list->head, *newNode;
-    int i;
+int addListPos(List list, Item el, int pos)
+{
+	struct node *p = list->head, *newNode;
+	int i;
 
 	/**
 	 * Controllo delle precondizioni.
 	 */
-    if(pos < 0 || pos > list->size)
-        return 0;
+	if (pos < 0 || pos > list->size)
+		return 0;
 
 	/**
 	 * Se la posizione è 0 aggiungi in testa.
 	 */
-    if(pos == 0) {
-        addHead(list, el);
-        return 1;
-    }
+	if (pos == 0)
+	{
+		addHead(list, el);
+		return 1;
+	}
 
 	/**
 	 * Scorre le posizioni.
 	 */
-    for(i = 1; i < pos; i++, p = p->next);
+	for (i = 1; i < pos; i++, p = p->next)
+		;
 
 	/**
 	 * - Crea il nuovo nodo.
@@ -284,16 +287,16 @@ int addListPos(List list, Item el, int pos) {
 	 * - Aggiungi l'indirizzo ad nodo->next precedente.
 	 * - Incremeta la dimensione della lista.
 	 */
-    newNode = malloc(sizeof(struct node));
-    newNode->value = el;
+	newNode = malloc(sizeof(struct node));
+	newNode->value = el;
 	/**
 	 * ATTENZIONE: p->next potrebbe essere NULL.
 	 * Nessuna correzione da fare.
 	 */
-    newNode->next = p->next;
-    p->next = newNode;
+	newNode->next = p->next;
+	p->next = newNode;
 
-    (list->size)++;
-    
-    return 1;
+	(list->size)++;
+
+	return 1;
 }

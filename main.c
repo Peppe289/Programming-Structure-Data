@@ -85,15 +85,16 @@ int main(void)
 				 * @DESTROY_NODE: è definito con removeHead().
 				 * L'intendo è rimuovere tutte le teste
 				 * per distruggere tutti i nodi.
-				 * 
+				 *
 				 * Tuttavia la funzione removeHead() ha un valore
 				 * di ritorno che è un puntatore al dato eliminato.
-				 * 
-				 * E' necessario fare il free() anche di quello. 
+				 *
+				 * E' necessario fare il free() anche di quello.
 				 */
 				el = DESTROY_NODE(list);
 
-				if (el) {
+				if (el)
+				{
 #ifdef SONG_COMPILE
 					free(artist(el));
 					free(title(el));
@@ -159,11 +160,11 @@ int main(void)
 				outputItem(stampa);
 
 #ifdef SONG_COMPILE
-					free(artist(stampa));
-					free(title(stampa));
-					free(stampa);
+				free(artist(stampa));
+				free(title(stampa));
+				free(stampa);
 #else
-					free(stampa);
+				free(stampa);
 #endif
 			}
 			free(delete);
@@ -180,11 +181,11 @@ int main(void)
 				printf("\nEliminato: ");
 				outputItem(stampa);
 #ifdef SONG_COMPILE
-					free(artist(stampa));
-					free(title(stampa));
-					free(stampa);
+				free(artist(stampa));
+				free(title(stampa));
+				free(stampa);
 #else
-					free(stampa);
+				free(stampa);
 #endif
 			}
 			break;
@@ -205,9 +206,12 @@ int main(void)
 			getchar();
 
 			el = inputItem();
-			if (ADD_POS_LIST(list, el, pos)) {
+			if (ADD_POS_LIST(list, el, pos))
+			{
 				printf("Posizione aggiunta con successo!\n");
-			} else {
+			}
+			else
+			{
 				printf("Errore nell'aggiungere la posizione\n");
 #ifdef SONG_COMPILE
 				free(artist(el));
