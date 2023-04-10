@@ -14,6 +14,7 @@
 #define SIZE_LIST(x) sizeList(x)
 #define DESTROY_NODE(x) removeHead(x)
 #define DESTROY_LIST(x) free(x)
+#define ADD_POS_LIST(x, y, z) addListPos(x, y, z)
 #else
 #define CREATE_DATA(x, y) addSong(x, y)
 #define PRINT_LIST(x) printList(songList(x))
@@ -23,6 +24,7 @@
 #define SIZE_LIST(x) sizeList(songList(x))
 #define DESTROY_NODE(x) removeHead(songList(x))
 #define DESTROY_LIST(x) free(songList(x))
+#define ADD_POS_LIST(x, y, z) addListPos(songList(x), y, z)
 #endif
 
 /**
@@ -34,17 +36,18 @@ static int choseMenu()
 
 	do
 	{
-		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s",
+		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s %s",
 			   "0) Esci dal programma\n",
 			   "1) Aggiungere un dato in testa alla lista\n",
 			   "2) Rimuovere un dato\n",
 			   "3) Rimuovere un dato con l'indice\n",
 			   "4) Ordinare la lista.\n",
-			   "5) Stampa la lista\n");
+			   "5) Stampa la lista\n",
+			   "6) Aggiungi un valore in una posizione\n");
 		printf("$ ");
 		scanf("%d", &input);
 
-	} while (input < 0 || input > 5);
+	} while (input < 0 || input > 6);
 
 	// pulisci il buffer
 	getchar();
@@ -193,6 +196,27 @@ int main(void)
 			break;
 		case 5:
 			PRINT_LIST(list);
+			break;
+		case 6:
+			printf("Inserisci la posizione: ");
+			scanf("%d", &pos);
+
+			// pulisci il buffer
+			getchar();
+
+			el = inputItem();
+			if (ADD_POS_LIST(list, el, pos)) {
+				printf("Posizione aggiunta con successo!\n");
+			} else {
+				printf("Errore nell'aggiungere la posizione\n");
+#ifdef SONG_COMPILE
+				free(artist(el));
+				free(title(el));
+				free(el);
+#else
+				free(el);
+#endif
+			}
 			break;
 		default:
 			/* none */

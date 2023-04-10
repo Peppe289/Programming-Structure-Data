@@ -25,5 +25,6 @@ char *inputString();
 struct node *headList(List data);
 struct node *nextList(struct node *data);
 Item valueNode(struct node *data);
+int addListPos(List list, Item el, int pos);
 
 #endif // _PSD_LIST_H_
