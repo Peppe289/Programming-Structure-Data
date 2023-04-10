@@ -16,6 +16,7 @@
 #define DESTROY_LIST(x) free(x)
 #define ADD_POS_LIST(x, y, z) addListPos(x, y, z)
 #define REVERSE_LIST(x) reverseList(x)
+#define CLONE_LIST(x) clonelist(x)
 #else
 #define CREATE_DATA(x, y) addSong(x, y)
 #define PRINT_LIST(x) printList(songList(x))
@@ -27,6 +28,7 @@
 #define DESTROY_LIST(x) free(songList(x))
 #define ADD_POS_LIST(x, y, z) addListPos(songList(x), y, z)
 #define REVERSE_LIST(x) reverseList(songList(x))
+#define CLONE_LIST(x) clonelist(songList(x))
 #endif
 
 /**
@@ -38,7 +40,7 @@ static int choseMenu()
 
 	do
 	{
-		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s %s %s",
+		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s %s %s %s",
 			   "0) Esci dal programma\n",
 			   "1) Aggiungere un dato in testa alla lista\n",
 			   "2) Rimuovere un dato\n",
@@ -46,11 +48,12 @@ static int choseMenu()
 			   "4) Ordinare la lista.\n",
 			   "5) Stampa la lista\n",
 			   "6) Aggiungi un valore in una posizione\n",
-			   "7) Reverse list\n");
+			   "7) Reverse list\n",
+			   "8) Clona la lista\n");
 		printf("$ ");
 		scanf("%d", &input);
 
-	} while (input < 0 || input > 7);
+	} while (input < 0 || input > 8);
 
 	// pulisci il buffer
 	getchar();
@@ -229,6 +232,14 @@ int main(void)
 				printf("Inverti la sequenza della lista...");
 				REVERSE_LIST(list);
 				printf("\nFatto!\n");
+			break;
+			case 8:
+				/**
+				 * Devo continuare l'adattamento al programma PSD-es5
+				 * 
+				 * La funzione worka ma non ho idea di dove ritornare la nuova lista. 
+				 */
+				// CLONE_LIST(list);
 			break;
 		default:
 			/* none */

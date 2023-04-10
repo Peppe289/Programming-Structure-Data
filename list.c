@@ -326,3 +326,32 @@ void reverseList(List list) {
 	 */
 	list->head = prev;
 }
+
+List clonelist(List list) {
+	struct node *read;
+	List ret;
+	void *el;
+
+	if (isEmpty(list))
+		return NULL;
+
+	/**
+	 * Crea il nodo sopra la lista vuoto
+	 * 
+	 * Contiene la dimensione e l'indirizzo del primo nodo utile.
+	 */
+	ret = newList();
+
+	for (read = list->head; read != NULL; read = read->next) {
+		el = cloneDataArgs(read->value);
+		addHead(ret, el);
+	}
+
+	/**
+	 * Ogni elemento viene inserito alla fine,
+	 * quindi inverti la sequenda dopo aver clonato. 
+	 */
+	reverseList(ret);
+
+	return ret;
+}

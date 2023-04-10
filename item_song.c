@@ -191,3 +191,38 @@ void free_struct(Node data) {
 	free(addrStruct(data));
 	free(data);
 }
+
+/**
+ * Il parametro Item data dovrebbe contenere il valore di nodo->data.
+ * 
+ * - Crea la memoria per la struttura song e i puntatori all'interno.
+ * - Copia ogni singolo indirizzo della struct song.
+ * - Ritorna il nuovo indirizzo.
+ */
+Item cloneDataArgs(Item data) {
+	struct song *ret;
+
+	/**
+	 * Crea la memoria per la struttura
+	 */
+	ret = malloc(sizeof(struct song));
+
+	/**
+	 * Crea la memoria e copia la stringa
+	 * 
+	 * - Artista
+	 * - Titolo 
+	 */
+	ret->artist = malloc((strlen(artist(data)) + 1) * sizeof(char));
+	strcpy(ret->artist, artist(data));
+
+	ret->title = malloc((strlen(title(data)) + 1) * sizeof(char));
+	strcpy(ret->title, title(data));
+
+	/**
+	 * Prendi il valore del float. 
+	 */
+	ret->duration = duration(data);
+
+	return ret;
+}

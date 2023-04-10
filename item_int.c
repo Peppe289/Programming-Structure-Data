@@ -57,3 +57,17 @@ void free_struct(Node data) {
 	free(addrStruct(data));
 	free(data);
 }
+
+/**
+ * Il parametro Item data dovrebbe contenere il valore di nodo->data.
+ * 
+ * - Crea la memoria heap per un nuovo int.
+ * - Copia il nuovo valore nella nuova memoria.
+ * - Ritorna il nuovo indirizzo.
+ */
+Item cloneDataArgs(Item data) {
+	int *ret;
+	ret = malloc(sizeof(int));
+	*ret = *(int *)data;
+	return ret;
+}

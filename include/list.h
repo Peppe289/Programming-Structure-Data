@@ -27,5 +27,7 @@ struct node *nextList(struct node *data);
 Item valueNode(struct node *data);
 int addListPos(List list, Item el, int pos);
 void reverseList(List list);
+List clonelist(List list);
+Item cloneDataArgs(Item data);
 
 #endif // _PSD_LIST_H_
