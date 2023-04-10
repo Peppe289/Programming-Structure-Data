@@ -300,3 +300,29 @@ int addListPos(List list, Item el, int pos)
 
 	return 1;
 }
+
+void reverseList(List list) {
+	struct node *read;
+	struct node *prev = NULL;
+	void *temp;
+
+	for (read = list->head; read != NULL; read = temp) {
+		/**
+		 * - Salva il successivo
+		 * - Metti il valore del precedente nel next dell'attuale nodo
+		 * - Metti nel valore temporaneo prev il valore del nodo attuale.
+		 * 
+		 * Nella istruzione di iterazione del for() con read = temp
+		 * possiamo scorrere la sequenza non invertita, poiché
+		 * temp contiene il vecchio nodo->next.
+		 */
+		temp = read->next;
+		read->next = prev;
+		prev = read;
+	}
+
+	/**
+	 * Alla fine del ciclo assegna la nuova testa, ovvero l'ultimo nodo. 
+	 */
+	list->head = prev;
+}

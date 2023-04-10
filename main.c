@@ -15,6 +15,7 @@
 #define DESTROY_NODE(x) removeHead(x)
 #define DESTROY_LIST(x) free(x)
 #define ADD_POS_LIST(x, y, z) addListPos(x, y, z)
+#define REVERSE_LIST(x) reverseList(x)
 #else
 #define CREATE_DATA(x, y) addSong(x, y)
 #define PRINT_LIST(x) printList(songList(x))
@@ -25,6 +26,7 @@
 #define DESTROY_NODE(x) removeHead(songList(x))
 #define DESTROY_LIST(x) free(songList(x))
 #define ADD_POS_LIST(x, y, z) addListPos(songList(x), y, z)
+#define REVERSE_LIST(x) reverseList(songList(x))
 #endif
 
 /**
@@ -36,18 +38,19 @@ static int choseMenu()
 
 	do
 	{
-		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s %s",
+		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s %s %s",
 			   "0) Esci dal programma\n",
 			   "1) Aggiungere un dato in testa alla lista\n",
 			   "2) Rimuovere un dato\n",
 			   "3) Rimuovere un dato con l'indice\n",
 			   "4) Ordinare la lista.\n",
 			   "5) Stampa la lista\n",
-			   "6) Aggiungi un valore in una posizione\n");
+			   "6) Aggiungi un valore in una posizione\n",
+			   "7) Reverse list\n");
 		printf("$ ");
 		scanf("%d", &input);
 
-	} while (input < 0 || input > 6);
+	} while (input < 0 || input > 7);
 
 	// pulisci il buffer
 	getchar();
@@ -221,6 +224,11 @@ int main(void)
 				free(el);
 #endif
 			}
+			break;
+			case 7:
+				printf("Inverti la sequenza della lista...");
+				REVERSE_LIST(list);
+				printf("\nFatto!\n");
 			break;
 		default:
 			/* none */
