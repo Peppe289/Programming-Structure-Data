@@ -159,71 +159,97 @@ Item searchListItem(List l, Item q, int *pos)
 	return NULL;
 }
 
-Item removeListItem(List l, Item q)
+Item removeListItem(List list, Item el)
 {
 	struct node *prev, *p;
 	Item val;
-	if (isEmpty(l))
+
+	if (isEmpty(list))
 		return NULL;
 
 	/**
 	 * Il valore da eliminare potrebbe
 	 * essere un valore nullo.
 	 */
-	if (q == NULL)
-	{
+	if (el == NULL)
 		return NULL;
+
+	p = list->head;
+
+	if (cmpItem(el, p->value) == 0)
+		return removeHead(list);
+
+	for (prev = p, p = p->next; p != NULL; p = p->next)
+	{
+		if (cmpItem(el, p->value) != 0)
+		{
+			/**
+			 * Salva il precedente se l'iterazione successiva
+			 * è quella per rimuovere l'item. (o quelle dopo o nessuna).
+			 */
+			prev = p;
+			continue;
+		}
+
+		prev->next = p->next;
+		val = p->value; // assegno il valore precedente dell'item
+		(list->size)--; // decremento taglia lista
+		/**
+		 * il valore dell'item viene restituito in output,
+		 * sarà la funzione chiamante a liberare quella memoria.
+		 */
+		free(p);	// libero memoria p
+		return val; // ritorno l'item
 	}
 
-	for (p = l->head; p != NULL; prev = p, p = p->next)
-	{
-		if (cmpItem(q, p->value) == 0)
-		{
-			if (p == l->head)
-				return removeHead(l);
-			else // si può anche evitare
-			{
-				prev->next = p->next;
-				val = p->value; // assegno il valore precedente dell'item
-				(l->size)--;	// decremento taglia lista
-				/**
-				 * il valore dell'item viene restituito in output,
-				 * sarà la funzione chiamante a liberare quella memoria. 
-				 */
-				free(p);		// libero memoria p
-				return val;		// ritorno l'item
-			}
-		}
-	}
 	return NULL; // caso in cui non è stato trovato
 }
 
-Item removeListPos(List l, int pos)
+Item removeListPos(List list, int pos)
 {
 	struct node *prev, *p;
 	Item val;
-	int i;
-	if (isEmpty(l) || pos < 0 || pos >= l->size) // controllo precondizione
+	int i = 0;
+
+	/**
+	 * Controlllo precondizione
+	 */
+	if (isEmpty(list) || pos < 0 ||
+		pos >= list->size)
 		return NULL;
-	for (i = 0, p = l->head; p != NULL; prev = p, p = p->next, i++)
+
+	p = list->head;
+
+	if (pos == 0 && p != NULL)
+		return removeHead(list);
+
+	prev = p;
+
+	for (i = 1, p = p->next; p != NULL; i++)
 	{
-		if (i == pos)
+		if (i != pos)
 		{
-			if (p == l->head)
-				return removeHead(l);
-			else // si può anche evitare
-			{
-				prev->next = p->next;
-				val = p->value; // assegno il valore precedente dell'item
-				(l->size)--;	// decremento taglia lista
-				/**
-				 * il valore dell'item viene restituito in output,
-				 * sarà la funzione chiamante a liberare quella memoria. 
-				 */
-				free(p);		// libero memoria p
-				return val;		// ritorno l'item
-			}
+			/**
+			 * Salva il precedente se l'iterazione successiva
+			 * è quella per rimuovere l'item. (o quelle dopo o nessuna).
+			 *
+			 * Passa anche al nodo successivo.
+			 */
+			prev = p;
+			p = p->next;
+			continue;
 		}
+
+		prev->next = p->next;
+		val = p->value; // assegno il valore precedente dell'item
+		(list->size)--; // decremento taglia lista
+		/**
+		 * il valore dell'item viene restituito in output,
+		 * sarà la funzione chiamante a liberare quella memoria.
+		 */
+		free(p);	// libero memoria p
+		return val; // ritorno l'item
 	}
+
 	return NULL;
 }
