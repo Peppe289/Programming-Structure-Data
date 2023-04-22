@@ -13,15 +13,18 @@ FLAGS = -Wall -Wextra -g
 FLAGS += -Iinclude/
 
 #
-# Other flags
-#
-FLAGS += -std=c2x
-
-#
 # Output name file
 #
 pwd = `pwd`
 OUTPUT = stack
+
+#
+# C version
+#
+STD_VERSION = c2x
+ifneq ($(std),)
+	STD_VERSION = $(std)
+endif
 
 #
 # Compiler
@@ -58,21 +61,23 @@ start: msg_start build
 	fi
 
 build: clean item_str stack_array main
-	@$(CC) stack_array.o item_str.o main.o $(FLAGS) -o $(OUTPUT)
+	@$(CC) stack_array.o item_str.o main.o -std=$(STD_VERSION) $(FLAGS) -o $(OUTPUT)
 
 main:
-	@$(CC) -c main.c $(FLAGS)
+	@$(CC) -c main.c -std=$(STD_VERSION) $(FLAGS)
 
 stack_array:
-	@$(CC) -c stack_array.c $(FLAGS)
+	@$(CC) -c stack_array.c -std=$(STD_VERSION) $(FLAGS)
 
 item_str:
-	@$(CC) -c item_str.c $(FLAGS)
+	@$(CC) -c item_str.c -std=$(STD_VERSION) $(FLAGS)
 
 msg_start:
 	@echo "Start build..."
-	@echo "Flags: 		$(FLAGS)"
-	@echo "Compiler: 	$(CC)"
+	@echo " "
+	@echo "*** Flags:	$(FLAGS)"
+	@echo "*** Compiler: 	$(CC)"
+	@echo "*** C version:	$(STD_VERSION)"
 	@echo " "
 	@echo "Build..."
 	@echo " "
