@@ -136,6 +136,9 @@ static char *inputString()
     return ret;
 }
 
+/**
+ * E' possibile prendere l'input sia da argv sia interno al programma.
+ */
 int main(int argc, char **argv)
 {
     char *exp;
