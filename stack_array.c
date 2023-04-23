@@ -49,7 +49,7 @@ int push(Stack s, Item el)
 
     if (s->top == s->dim)
     {
-        temp = realloc(s->elements, sizeof(Item) * (s->dim + ADD_DIM));
+        temp = realloc(s->elements, sizeof(Item) * (unsigned long int)(s->dim + ADD_DIM));
 
         if (temp == NULL)
             return 0;

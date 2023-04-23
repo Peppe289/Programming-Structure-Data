@@ -33,14 +33,15 @@ static inline int isCorresponding(char ch1, char ch2)
 /*************************************************
 **************************************************/
 
-/**
- * @stackdata: stack per caricare le parentesi aperte.
- * @ch: pointer al primo elemento dello stack. serve per il confronto.
- * @ret: valore di ritorno. stabilisce se la stringa è bilanciata o no.
- */
 static int isBalanced(char *exp)
 {
+    /**
+     * stack per caricare le parentesi aperte.
+     */
     Stack stackdata = newStack();
+    /**
+     * pointer al primo elemento dello stack. serve per il confronto.
+     */
     char *ch;
     int ret;
     int i;
@@ -126,8 +127,8 @@ static char *inputString()
 
     do
     {
-        tmp = getchar();
-        ret = realloc(ret, (++size) * sizeof(char));
+        tmp = (char)getchar();
+        ret = realloc(ret, (unsigned long int)(++size) * sizeof(char));
         ret[size - 1] = tmp;
     } while (tmp != '\n');
 
@@ -143,10 +144,13 @@ int main(int argc, char **argv)
 {
     char *exp;
 
-    if (argc == 1) {
+    if (argc == 1)
+    {
         printf("Inserisci l'espressione: ");
         exp = inputString();
-    } else {
+    }
+    else
+    {
         exp = argv[1];
     }
 
