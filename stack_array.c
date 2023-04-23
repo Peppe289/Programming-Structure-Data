@@ -77,7 +77,9 @@ int pop(Stack s)
      * L'indirizzo che andiamo a prendere si trova nello stack.
      * Non possiamo fare il free().
      */
-    // free(s->elements[s->top]);
+#if 0
+    free(s->elements[s->top]);
+#endif
 
     return 1;
 }

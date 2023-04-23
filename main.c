@@ -15,17 +15,20 @@ struct stack
 ***************** inline func ********************
 **************************************************/
 
-static inline int isOpen(char ch)
+INLINE_STATIC
+int isOpen(char ch)
 {
     return (ch == '(') || (ch == '[') || (ch == '{');
 }
 
-static inline int isClosed(char ch)
+INLINE_STATIC
+int isClosed(char ch)
 {
     return (ch == ']') || (ch == '}') || (ch == ')');
 }
 
-static inline int isCorresponding(char ch1, char ch2)
+INLINE_STATIC
+int isCorresponding(char ch1, char ch2)
 {
     return (ch1 == ch2 - 1) || (ch1 == ch2 - 2);
 }
@@ -123,7 +126,6 @@ static char *inputString()
     char *ret = NULL;
     char tmp;
     int size = 0;
-    // ret = malloc(size * sizeof(char));
 
     do
     {
