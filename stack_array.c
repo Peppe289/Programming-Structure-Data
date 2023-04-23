@@ -91,13 +91,3 @@ Item top(Stack s)
 
     return s->elements[(s->top) - 1];
 }
-
-void printStack(Stack s)
-{
-    int i;
-
-    for (i = s->top - 1; i >= 0; i--)
-    {
-        outputItem(s->elements[i]);
-    }
-}

@@ -60,17 +60,14 @@ start: msg_start build
 		true; \
 	fi
 
-build: clean item_str stack_array main
-	@$(CC) stack_array.o item_str.o main.o -std=$(STD_VERSION) $(FLAGS) -o $(OUTPUT)
+build: clean stack_array main
+	@$(CC) stack_array.o main.o -std=$(STD_VERSION) $(FLAGS) -o $(OUTPUT)
 
 main:
 	@$(CC) -c main.c -std=$(STD_VERSION) $(FLAGS)
 
 stack_array:
 	@$(CC) -c stack_array.c -std=$(STD_VERSION) $(FLAGS)
-
-item_str:
-	@$(CC) -c item_str.c -std=$(STD_VERSION) $(FLAGS)
 
 msg_start:
 	@echo "Start build..."

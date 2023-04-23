@@ -20,6 +20,5 @@ int isEmptyStack(Stack);
 int push(Stack, Item);
 int pop(Stack);
 Item top(Stack);
-void printStack(Stack);
 
 #endif /* _PSD_STACK_H_ */

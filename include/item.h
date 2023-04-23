@@ -13,8 +13,4 @@ typedef void* Item;
 #define DBG(...)
 #endif
 
-Item inputItem();
-void outputItem(Item);
-int cmpItem(Item, Item);
-
 #endif /* _PSD_ITEM_H_ */
