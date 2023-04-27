@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "item_str": "c",
+        "main": "c",
+        "stack_array": "c",
+        "item.h": "c",
+        "stack.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.cStandard": "gnu23",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/peppe289/Desktop/unisa/PSD-lab7",
+            "binaryPath": "/home/peppe289/Desktop/unisa/PSD-lab7/a.out",
+            "binaryArgs": []
+        }
+    ],
+    "cmake.configureOnOpen": false
+}
