@@ -196,8 +196,6 @@ int main(void)
 			printf("Inserisci il dato da cercare: ");
 			search = addrDataInput();
 
-			// stampa = REMOVE_ITEM(list, search);
-
 			pos = countItemListRec(list, search);
 
 			if (!pos)
