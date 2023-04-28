@@ -496,9 +496,15 @@ Item searchListRec(List data, Item value, int *pos) {
 	local.size = data->size - 1;
 	local.head = ((struct node *)headList(data))->next;
 
+	/**
+	 * Se sono uguali torna il valore dell'indirizzo e chiudi la ricorsione
+	 */
 	if (!cmpItem(getHead(data), value))
 		return getHead(data);
 
+	/**
+	 * Se il valore non è stato trovato incrementa la posizione.
+	*/
 	++(*pos);
 
 	return searchListRec(&local, value, pos);
