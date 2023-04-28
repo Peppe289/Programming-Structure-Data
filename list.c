@@ -474,6 +474,32 @@ int countItemListRec(List data, Item value) {
 	return ret + countItemListRec(&local, value);
 }
 
-Item searchListRec(List data, Item value, int *) {
+Item searchListRec(List data, Item value, int *pos) {
+	/**
+	 * E' necessaria una variabile ausiliaria
+	 * che acquisisce la lista a partire
+	 * dall'elemento successivo.
+	 * Ad ogni ricorsione viene caricata
+	 * una sottolista.
+	 */
+	struct list local;
 
+	/**
+	 * Caso Base: Lista vuota.
+	 */
+	if (isEmpty(data))
+		return NULL;
+
+	/**
+	 * Posizionati con la struct list all'elemento successivo.
+	 */
+	local.size = data->size - 1;
+	local.head = ((struct node *)headList(data))->next;
+
+	if (!cmpItem(getHead(data), value))
+		return getHead(data);
+
+	++(*pos);
+
+	return searchListRec(&local, value, pos);
 }

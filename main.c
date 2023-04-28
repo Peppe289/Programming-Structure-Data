@@ -25,7 +25,7 @@ static int choseMenu()
 
 	do
 	{
-		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s %s %s %s %s",
+		printf("\nScegli cosa vuoi fare:\n %s %s %s %s %s %s %s %s %s %s %s",
 			   "0) Esci dal programma (Dealloca ricorsivamente)\n",
 			   "1) Aggiungere un dato in testa alla lista\n",
 			   "2) Rimuovere un dato\n",
@@ -35,11 +35,12 @@ static int choseMenu()
 			   "6) Aggiungi un valore in una posizione\n",
 			   "7) Reverse list\n",
 			   "8) Clona la lista\n",
-			   "9) Count value (ricorsivo)\n");
+			   "9) Count value (ricorsivo)\n",
+			   "10) Search Item (ricorsivo)\n");
 		printf("$ ");
 		scanf("%d", &input);
 
-	} while (input < 0 || input > 9);
+	} while (input < 0 || input > 10);
 
 	// pulisci il buffer
 	getchar();
@@ -193,7 +194,7 @@ int main(void)
 				// CLONE_LIST(list);
 			break;
 		case 9:
-			printf("Inserisci il dato da cercare: ");
+			printf("Inserisci il dato da contare: ");
 			search = addrDataInput();
 
 			pos = countItemListRec(list, search);
@@ -214,6 +215,37 @@ int main(void)
 				printf("\nValore %s presente %d volte\n", (char *)search, pos);
 #endif
 			}
+			free(search);
+			break;
+		case 10:
+			printf("Inserisci il dato da cercare: ");
+			search = addrDataInput();
+
+			stampa = malloc(sizeof(int));
+			*(int *)stampa = 0;
+
+			/**
+			 * @el: indirizzo del dato nella lista 
+			 */
+			el = searchListRec(list, search, stampa);
+
+			if (!el)
+			{
+#ifdef INT_COMPILE
+				printf("\nValore %d non trovato\n", *(int *)search);
+#else
+				printf("\nValore %s non trovato\n", (char *)search);
+#endif
+			}
+			else
+			{
+#ifdef INT_COMPILE
+				printf("\nValore %d presente in posizione %d\n", *(int *)search, *(int *)stampa);
+#else
+				printf("\nValore %s presente in posizione %d\n", (char *)search, *(int *)stampa);
+#endif
+			}
+			free(stampa);
 			free(search);
 			break;
 		default:
