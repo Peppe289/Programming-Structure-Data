@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <queue.h>
 
+#define array_start(x) getArray(x) + getHead(x)
+#define array_size(x) getTail(x) - getHead(x)
+
 static void free_item(Item *array, int size)
 {
 	int i;
@@ -38,10 +41,10 @@ int main(void)
 	 *
 	 * Se resta solo un elemento non serve cercare il minimo.
 	 */
-	selection_sort_Rec(getArray(coda) + getHead(coda), getTail(coda) - getHead(coda));
+	selection_sort_Rec(array_start(coda), array_size(coda));
 
 	printf("\nOrdinato: ");
-	printArray(getArray(coda) + getHead(coda), getTail(coda) - getHead(coda));
+	printArray(array_start(coda), array_size(coda));
 
 	/**
 	 * Reverse:
@@ -53,16 +56,16 @@ int main(void)
 	 * Ad ogni ricorsione quindi scambia due elementi concludendo
 	 * quindi le operazioni in N/2.
 	 */
-	reverseArray_Rec(getArray(coda) + getHead(coda), getTail(coda) - getHead(coda));
+	reverseArray_Rec(array_start(coda), array_size(coda));
 
 	printf("\nReverse: ");
-	printArray(getArray(coda) + getHead(coda), getTail(coda) - getHead(coda));
+	printArray(array_start(coda), array_size(coda));
 
 	/**
 	 * - free array
 	 * - free Queue
 	 */
-	free_item(getArray(coda) + getHead(coda), getTail(coda) - getHead(coda));
+	free_item(array_start(coda), array_size(coda));
 	free(coda);
 
 	printf("\n");
