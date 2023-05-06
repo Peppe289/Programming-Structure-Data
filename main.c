@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <queue.h>
 
-static void free_item(Item *array, int size) {
+static void free_item(Item *array, int size)
+{
 	int i;
 
 	for (i = 0; i != size; ++i)
@@ -13,32 +14,31 @@ static void free_item(Item *array, int size) {
 
 int main(void)
 {
-	// Item array[SIZE];
-
 	Queue coda = newQueue();
-    int i;
+	int i;
 
-    for(i = 0; i < 5; i++){
-        enqueue(coda, inputItem());
-    }
+	for (i = 0; i < 5; i++)
+	{
+		enqueue(coda, inputItem());
+	}
 
 	/**
 	 * Ordinamento:
 	 * Complessità N * N/2
-	 * 
+	 *
 	 * Ad ogni passo ricorsivo il vettore viene ridotto di 1,
 	 * quindi la ricerca si riduce alla sommatoria di N - 1 per ogni N.
-	 * 
+	 *
 	 * Es:
-	 * 
+	 *
 	 * - 1, 2, 3, 4, 5
 	 * - 2, 3, 4, 5
 	 * - 3, 4, 5
 	 * - 4, 5
-	 * 
+	 *
 	 * Se resta solo un elemento non serve cercare il minimo.
 	 */
-    selection_sort_Rec(getArray(coda) + getHead(coda), getTail(coda));
+	selection_sort_Rec(getArray(coda) + getHead(coda), getTail(coda));
 
 	printf("\nOrdinato: ");
 	printArray(getArray(coda) + getHead(coda), getTail(coda));
@@ -46,10 +46,10 @@ int main(void)
 	/**
 	 * Reverse:
 	 * Complessità computazione N/2
-	 * 
+	 *
 	 * Il programma ricorsivo scambia il primo elemento con l'ultimo,
 	 * ristringendo il vettore di size - 2 ad ogni passo ricorsivo.
-	 * 
+	 *
 	 * Ad ogni ricorsione quindi scambia due elementi concludendo
 	 * quindi le operazioni in N/2.
 	 */

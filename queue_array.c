@@ -3,55 +3,64 @@
 #include <stdlib.h>
 #define MAXQUEUE 50
 
-struct queue{
+struct queue
+{
     Item array[MAXQUEUE];
     int head;
     int tail;
 };
 
-Item *getArray(Queue data) {
+Item *getArray(Queue data)
+{
     return data->array;
 }
 
-int getTail(Queue data) {
+int getTail(Queue data)
+{
     return data->tail;
 }
 
-int getHead(Queue data) {
+int getHead(Queue data)
+{
     return data->head;
 }
 
-Queue newQueue(){
+Queue newQueue()
+{
     Queue newCoda = malloc(sizeof(struct queue));
-    newCoda -> head = 0;
-    newCoda -> tail = 0;
+    newCoda->head = 0;
+    newCoda->tail = 0;
     return newCoda;
 }
 
-int isEmptyQueue(Queue q){
+int isEmptyQueue(Queue q)
+{
     return (q->head == q->tail);
 }
 
-int enqueue(Queue q, Item e){
-    if((q->tail+1)%MAXQUEUE == q->head)
+int enqueue(Queue q, Item e)
+{
+    if ((q->tail + 1) % MAXQUEUE == q->head)
         return 0;
     q->array[q->tail] = e;
-    q->tail = (q->tail+1)%MAXQUEUE;
+    q->tail = (q->tail + 1) % MAXQUEUE;
     return 1;
 }
 
-Item dequeue(Queue q){
-    if(isEmptyQueue(q))
+Item dequeue(Queue q)
+{
+    if (isEmptyQueue(q))
         return NULL;
     Item item = q->array[q->head];
-    q->head = (q->head+1)%MAXQUEUE;
+    q->head = (q->head + 1) % MAXQUEUE;
     return item;
 }
 
-void printQueue(Queue q){
+void printQueue(Queue q)
+{
     int i;
-    for (i = q->head; i != q->tail; i = (i+1)%MAXQUEUE){
+    for (i = q->head; i != q->tail; i = (i + 1) % MAXQUEUE)
+    {
         outputItem(q->array[i]);
     }
 }
-

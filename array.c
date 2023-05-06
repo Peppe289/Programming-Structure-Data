@@ -3,50 +3,54 @@
 #include <utils.h>
 #include <string.h>
 
-void inputArray(Item arr[], int n){
+void inputArray(Item arr[], int n)
+{
 	int i;
 
-	for(i = 0; i < n; i++){
-		arr[i]=inputItem();
+	for (i = 0; i < n; i++)
+	{
+		arr[i] = inputItem();
 	}
 }
 
-void printArray(Item arr[], int n){
+void printArray(Item arr[], int n)
+{
 	int i;
 
-	for(i = 0; i < n; i++){
+	for (i = 0; i < n; i++)
+	{
 		outputItem(arr[i]);
 	}
 }
 
 void bubbleSort(Item arr[], int n)
 {
-	int i,j;
-	for(i=1; i<n; i++)
-		for(j=0; j<n-i; j++)
-			if(cmpItem(arr[j], arr[j+1])>0)
-				swap(&arr[j], &arr[j+1]);
-
+	int i, j;
+	for (i = 1; i < n; i++)
+		for (j = 0; j < n - i; j++)
+			if (cmpItem(arr[j], arr[j + 1]) > 0)
+				swap(&arr[j], &arr[j + 1]);
 }
 
 /************************************************
 ****************** Ordinamento ******************
 *************************************************/
-static int find_min(Item arr[], int size) {
-    int index;
+static int find_min(Item arr[], int size)
+{
+	int index;
 
 	/**
-	 * Se arrivi alla fine dell'array non devi confrontare. 
+	 * Se arrivi alla fine dell'array non devi confrontare.
 	 */
 	if (size == 1)
-        return 0;
+		return 0;
 
 	/**
 	 * ricorsivamente a partire dagli ultimi
 	 * elementi confrontali e ritorna ogni volta
 	 * l'index con valore minore.
 	 */
-    index = find_min(arr, size - 1);
+	index = find_min(arr, size - 1);
 
 	if (cmpItem(arr[size - 1], arr[index]) < 0)
 		return size - 1;
@@ -54,7 +58,8 @@ static int find_min(Item arr[], int size) {
 		return index;
 }
 
-void selection_sort_Rec(Item array[], int size) {
+void selection_sort_Rec(Item array[], int size)
+{
 	int tmp;
 
 	/**
@@ -68,7 +73,8 @@ void selection_sort_Rec(Item array[], int size) {
 	/**
 	 * Algoritmo stabile: se gli indirizzi sono uguali non scambiarli.
 	 */
-	if (tmp) {
+	if (tmp)
+	{
 #if 0 // debug
 		printf("%s(): scambia array[0]: %d con array[%d]: %d\n",
 						__func__, *(int *)array[0], tmp, *(int *)array[tmp]);
@@ -83,7 +89,8 @@ void selection_sort_Rec(Item array[], int size) {
 *************************************************/
 
 /************** Reverse Ricorsivo **************/
-void reverseArray_Rec(Item array[], int size) {
+void reverseArray_Rec(Item array[], int size)
+{
 
 	if (size < 2)
 		return;
