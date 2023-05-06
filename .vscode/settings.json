@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "array": "c",
+        "concepts": "c",
+        "fstream": "c",
+        "optional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "valarray": "c",
+        "variant": "c",
+        "item.h": "c",
+        "queue_array": "c",
+        "utils.h": "c",
+        "string.h": "c",
+        "stdio.h": "c",
+        "array.h": "c"
+    }
+}
