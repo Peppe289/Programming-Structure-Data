@@ -2,6 +2,7 @@
 #include <item.h>
 #include <utils.h>
 #include <string.h>
+#include <queue.h>
 
 void inputArray(Item arr[], int n)
 {
@@ -89,13 +90,30 @@ void selection_sort_Rec(Item array[], int size)
 *************************************************/
 
 /************** Reverse Ricorsivo **************/
-void reverseArray_Rec(Item array[], int size)
+void reverseArray_Rec(Queue q, int size)
 {
+	Item tmp;
 
-	if (size < 2)
+	/**
+	 * Passo base:
+	 *
+	 * - Se la coda è vuota.
+	 * - Se size è 1: quindi è rimasto l'ultimo
+	 * elemento che non deve essere spostato,
+	 * ma sarà lui ad essere in cima alla testa.
+	 */
+	if (isEmptyQueue(q) || size == 1)
+	{
 		return;
+	}
 
-	swap(&array[0], &array[size - 1]);
-	reverseArray_Rec(array + 1, size - 2);
+	/**
+	 * - Rimuovi la coda;
+	 * - Passo ricorsivo;
+	 * - Aggiungi la testa alla coda.
+	 */
+	tmp = dequeue(q);
+	reverseArray_Rec(q, size - 1);
+	enqueue(q, tmp);
 }
 /***********************************************/

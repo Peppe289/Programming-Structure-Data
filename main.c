@@ -56,7 +56,7 @@ int main(void)
 	 * Ad ogni ricorsione quindi scambia due elementi concludendo
 	 * quindi le operazioni in N/2.
 	 */
-	reverseArray_Rec(array_start(coda), array_size(coda));
+	reverseArray_Rec(coda, array_size(coda));
 
 	printf("\nReverse: ");
 	printArray(array_start(coda), array_size(coda));
