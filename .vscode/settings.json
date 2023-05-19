@@ -1,5 +1,5 @@
 {
     "files.associations": {
-        "item.h": "c"
+        <item.h>: "c"
     }
 }

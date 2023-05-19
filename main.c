@@ -1,58 +1,62 @@
-#include <bst.h>
-#include <item.h>
 #include <stdio.h>
+#include <stdlib.h>
+
+#include <btree.h>
+#include <item.h>
 
 int main(){
-	int a [] = {20, 10, 30, 5, 15, 25, 40, 3, 6, 35};
-	int b [] = {20, 10, 30, 5, 15, 25, 40, 3, 35};
-	BST bst = newBST();
-	BST bst2 = newBST();
-	int i;
-	Item el;
+	BTree h,a,c,d,l,p,s,o,q;
+
+	int array[] = {2, 4, 7, 35, 86, 5, 76, 32, 120};
 	int ret;
+	Item el;
 
-	for(i=0; i<(int)(sizeof(a)/sizeof(int)); i++){
-		insertBST(&bst, &a[i]);
-	}
+	q=buildTree(NULL,NULL,&array[0]);
+	o=buildTree(NULL,NULL,&array[1]);
+	s=buildTree(NULL,NULL,&array[2]);
+	p=buildTree(NULL,NULL,&array[3]);
+	d=buildTree(NULL,NULL,&array[4]);
+	l=buildTree(o,q,&array[5]);
+	a=buildTree(d,l,&array[6]);
+	c=buildTree(p,s,&array[7]);
+	h=buildTree(a,c,&array[8]);
 
-	for(i=0; i<(int)(sizeof(b)/sizeof(int)); i++){
-		insertBST(&bst2, &b[i]);
-	}
+	printf("preorder:\t");
+	preOrder(h);
 
-	printf("\nInserisci un elemento da eliminare: ");
+	printf("\npostorder:\t");
+	postOrder(h);
+
+	printf("\ninorder:\t");
+	inOrder(h);
+
+
+	printf("\nIl valore massimo nell'albero è: ");
+	outputItem(max(h));
+
+
+	printf("\nInserisci il valore da cercare: ");
 	el = inputItem();
+	ret = searchInLevel(h, el);
 
-	el = deleteBST(&bst, el);
-
-	if (el != NULL)
-		printf("Elemento trovato ed eliminato\n");
-	else
-		printf("Eleneto non trovato\n");
-
-	
-	printf("Inserisci l'elemento da cercare: ");
-	el = inputItem();
-	ret = searchInLevel(bst, el);
-
-	if (ret == -1) {
-		printf("Elemento non trovato.\n");
+	if (ret == 0) {
+		printf("Valore non trovato\n");
 	} else {
-		printf("Elementro trovato in profondità %d\n", ret);
+		printf("Valore trovato\n");
 	}
 
-	ret = cmpbst(bst, bst2);
+	free(el);
+
+	ret = cmpBTree(h, h);
 
 	if (ret) {
-		printf("Gli alberi sono uguali\n");
+		printf("\nGli alberi sono ugauli");
 	} else {
-		printf("Gli alberi non sono uguali\n");
+		printf("\nGli alberi non sono uguali");
 	}
 
-	printf("Il minimo e': ");
-	outputItem(min(bst));
+	free_tree(h);
 
-	printf("\nIl massimo e': ");
-	outputItem(max(bst));
-
+	printf("\n");
 	return 0;
 }

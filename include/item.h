@@ -1,5 +1,5 @@
-#ifndef _LIBS_ITEM_
-#define _LIBS_ITEM_
+#ifndef _ITEM_H_
+#define _ITEM_H_
 
 typedef void* Item;
 
@@ -7,4 +7,4 @@ Item inputItem();
 void outputItem(Item);
 int cmpItem(Item,Item);
 
-#endif /* _LIBS_ITEM_ */
+#endif /* _ITEM_H_ */
