@@ -11,10 +11,11 @@ struct node
 	struct node *right;
 };
 
-void free_tree(BTree btree) {
+void free_tree(BTree btree)
+{
 	if (isEmptyTree(btree))
 		return;
-	
+
 	free_tree(btree->left);
 	free_tree(btree->right);
 	free(btree);
@@ -93,51 +94,51 @@ void inOrder(BTree btree)
 
 int cmpBTree(BTree data_1, BTree data_2)
 {
-    int right = 0, left = 0;
+	int ret = 0;
 
-    if (isEmptyTree(data_1) && isEmptyTree(data_2))
-    {
-        /**
-         * Controlla se entrambi gli alberi sono vuoti
-         * (o finiti in caso di sottoalberi).
-         *
-         * I valori devono essere uguali ed entrambi true.
-         */
-        return 1;
-    }
-    else if (isEmptyTree(data_1) || isEmptyTree(data_2))
-    {
-        /**
-         * I valori non sono coerenti. Un albero ha finito e l'altro no.
-         * Gli alberi non sono uguali.
-         */
-        return 0;
-    }
+	if (isEmptyTree(data_1) && isEmptyTree(data_2))
+	{
+		/**
+		 * Controlla se entrambi gli alberi sono vuoti
+		 * (o finiti in caso di sottoalberi).
+		 *
+		 * I valori devono essere uguali ed entrambi true.
+		 */
+		return 1;
+	}
+	else if (isEmptyTree(data_1) || isEmptyTree(data_2))
+	{
+		/**
+		 * I valori non sono coerenti. Un albero ha finito e l'altro no.
+		 * Gli alberi non sono uguali.
+		 */
+		return ret;
+	}
 
-    /**
-     * Controlla se i valori contenuti sono uguali.
-     */
-    if (cmpItem(data_1->value, data_2->value) == 0)
-    {
-        /**
-         * Se i valori sono uguali controlla il nodo sinisto
-         * e il nodo destro e il loro esito.
-         *
-         * Se gli alberi non sono ugali verrà restituito 0.
-         */
-        left = cmpBTree(data_1->left, data_2->left);
-        right = cmpBTree(data_1->right, data_2->right);
-    }
+	/**
+	 * Controlla se i valori contenuti sono uguali.
+	 */
+	if (cmpItem(data_1->value, data_2->value) == 0)
+	{
+		/**
+		 * Se i valori sono uguali controlla il nodo sinisto
+		 * e il nodo destro e il loro esito.
+		 *
+		 * Se gli alberi non sono ugali verrà restituito 0.
+		 */
+		ret = (cmpBTree(data_1->left, data_2->left) &&
+			   cmpBTree(data_1->right, data_2->right));
+	}
 
-    /**
-     * Se gli alberi sono uguali entrambi i valori sono true,
-     * quindi restituirà 1 altrimenti 0.
-     */
-    return right && left;
+	/**
+	 * Se gli alberi sono uguali entrambi i valori sono true,
+	 * quindi restituirà 1 altrimenti 0.
+	 */
+	return ret;
 }
 
-Item max(BTree data) {
-
+Item max(BTree data)
+{
 	Item max_left;
 	Item max_right;
 	Item tmp = NULL;
@@ -165,20 +166,25 @@ Item max(BTree data) {
 	 * destro c'è un valore maggiore, altrimenti
 	 * nel ramo sinistro.
 	 */
-	if (cmpItem(max_right, max_left) > 0) {
+	if (cmpItem(max_right, max_left) > 0)
+	{
 		tmp = max_right;
-	} else {
+	}
+	else
+	{
+		/**
+		 * Vale anche nel caso in cui i due valori siano uguali.
+		 */
 		tmp = max_left;
 	}
 
 	/**
 	 * Confronta il valore dei rami con il valore attuale.
-	 * 
+	 *
 	 * Con questa forma se è minore di 0 allora il valore attuale è meggiore.
 	 */
-	if (cmpItem(tmp, data->value) < 0) {
+	if (cmpItem(tmp, data->value) < 0)
 		tmp = data->value;
-	}
 
 	/**
 	 * Torna l'eventuale valore aggiornato.
@@ -186,12 +192,8 @@ Item max(BTree data) {
 	return tmp;
 }
 
-
-int searchInLevel(BTree data, Item value) {
-
-	int find_left;
-	int find_right;
-
+int searchInLevel(BTree data, Item value)
+{
 	/**
 	 * L'albero è finito ma non abbiamo trovato valori.
 	 */
@@ -204,13 +206,17 @@ int searchInLevel(BTree data, Item value) {
 	 */
 	if (cmpItem(data->value, value) == 0)
 		return 1;
-	
-	find_left = searchInLevel(data->left, value);
-	find_right = searchInLevel(data->right, value);
 
 	/**
-	 * Controlla i rami di destra e i rami di sinistra
-	 * e fai un or. se esiste da qualche parte torna true.
+	 * In questo modo se il valore sta nel ramo destro,
+	 * evitiamo di continuare la ricerca sui rami sinistri.
 	 */
-	return find_left || find_right;
+	if (searchInLevel(data->left, value))
+		return 1;
+
+	/**
+	 * Se il valore non si trova a sinistra allora si troverà
+	 * a destra (forse).
+	 */
+	return searchInLevel(data->right, value);
 }
