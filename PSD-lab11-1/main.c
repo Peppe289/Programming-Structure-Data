@@ -203,7 +203,7 @@ void mergeSort(int *array, int size)
 				right_size = size - (left + left_size);
 
 			merge(&array[left], &array[left + left_size], left_size,
-														right_size, &array[left]);
+				  right_size, &array[left]);
 		}
 	}
 }
