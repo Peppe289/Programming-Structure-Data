@@ -11,8 +11,6 @@ struct automobile {
     int immatric;
 };
 
-
-
 Auto newAuto(char data[4][50]) {
     Auto ret;
     ret = malloc(sizeof(struct automobile));
